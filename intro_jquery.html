@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+
+<form action="http://www.google.com" id="form">
+	<input type="text" name="q">
+	<input type="submit" value="Buscar" id="q">
+</form>
+<hr>
+<input type="text" value="" name="buscar" id="buscar" size="10" placeholder="Buscar ...">
+
+<input type="button" value="+Agregar" id="btn_buscar"> 
+<ul id="rs"></ul>
+
+<select name="select_ejemplo" id="select_ejemplo">
+	<option value="1">Uno</option>
+	<option value="2">Dos</option>
+	<option value="3">Tres</option>
+</select>
+
+<div id="target">
+  Right-click here
+</div>
+<a href="http://www.google.cl">Link a google</a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script>
+
+	$( document ).ready(function() {    
+		$("#buscar").focus();
+		var contar = 1;
+		$('#btn_buscar').on('click',function(){
+			// aca se captura el evento
+			// var txt=$(this).siblings('input').val();
+			var txt = $("#buscar").val();
+			$("#rs").append('<li>' + contar + '.- ' +txt+'</li>');
+			$("#buscar").val('').focus();
+			contar ++ ;
+			// $("#buscar").focus();
+		});
+
+		$('#evento').on('click',function(e){
+			alert("sds");
+		});
+
+		$('#buscar').on('change', function() {
+		  alert( this.value ); // or $(this).val()
+		  // $('body').append('<input type="text" name="otro" value="">');
+		});
+
+		// $(document).keypress(function(event) {
+		// 	console.log(event.which);
+		//     if(event.which == 13) {
+		//         // alert('You pressed enter!');
+		// 		var txt = $("#buscar").val();
+				
+		// 		$("#rs").append('<li>'+txt+'</li>');
+		// 		$("#buscar").val('').focus();
+		// 		// console.log($(this));
+		//     }
+		// });
+
+		$('a').on('click',function(e){
+			e.preventDefault();
+			alert("sdsdfd");
+		});
+
+		$( "#target" ).contextmenu(function() {
+		  alert( "Handler for .contextmenu() called." );
+		});
+
+	});
+
+	$("#q").on('click',function(e){
+		e.preventDefault();
+
+		alert("sadasd");
+		// $("#form").submit();
+		$(this).parent().submit();
+	});
+
+	// $('#btn_buscar').click(function(){
+	// 	alert("xD");
+	// });
+
+
+</script>
+</body>
+</html>
